@@ -222,7 +222,9 @@
 
   /* ---------- 行程总览（点击卡片跳转每日行程） ---------- */
   function renderOverview() {
-    $("#overview-grid").innerHTML = T.days
+    const el = $("#overview-grid") || $(".overview");
+    if (!el) return;
+    el.innerHTML = T.days
       .map((day, i) => `<a class="ov-item ${day.key}" href="#day-${i}">
         <span class="ov-date">${day.d} ${day.w}</span>
         <span class="ov-emoji">${day.emoji}</span>
@@ -325,16 +327,20 @@
 
   /* ---------- init ---------- */
   document.addEventListener("DOMContentLoaded", () => {
-    renderMembers();
-    renderCountdown();
-    renderOverview();
-    renderTrainTt();
-    renderDays();
-    renderFlights();
-    renderHotels();
-    renderFoods();
-    renderWeather();
+    // 每个板块独立 try/catch：任一板块出错不影响其他板块
+    const safe = (fn) => { try { fn(); } catch (e) { console.error("[render]", fn.name, e); } };
+    safe(renderMembers);
+    safe(renderCountdown);
+    safe(renderOverview);
+    safe(renderTrainTt);
+    safe(renderDays);
+    safe(renderFlights);
+    safe(renderHotels);
+    safe(renderFoods);
+    safe(renderWeather);
     // 每分钟刷新一次营业状态
-    setInterval(() => { renderTrainTt(); renderDays(); renderFoods(); renderHotels(); }, 60000);
+    setInterval(() => {
+      safe(renderTrainTt); safe(renderDays); safe(renderFoods); safe(renderHotels);
+    }, 60000);
   });
 })();
