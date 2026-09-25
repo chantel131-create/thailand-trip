@@ -220,10 +220,22 @@
       .join("");
   }
 
+  /* ---------- 行程总览（点击卡片跳转每日行程） ---------- */
+  function renderOverview() {
+    $("#overview-grid").innerHTML = T.days
+      .map((day, i) => `<a class="ov-item ${day.key}" href="#day-${i}">
+        <span class="ov-date">${day.d} ${day.w}</span>
+        <span class="ov-emoji">${day.emoji}</span>
+        <span class="ov-txt">${day.ov}</span>
+        <span class="ov-jump">点击直达当日行程 ↘</span>
+      </a>`)
+      .join("");
+  }
+
   /* ---------- 每日行程 ---------- */
   function renderDays() {
     $("#days-list").innerHTML = T.days
-      .map((day) => {
+      .map((day, i) => {
         const items = day.items
           .map((it) => `<div class="day-item">
             <div class="di-time">${it.t}</div>
@@ -236,7 +248,7 @@
           .join("");
         const cityCls = day.key === "bkk" ? "bkk" : day.key === "cnx" ? "cnx" : "";
         const cityTagCls = day.key === "none" ? "none" : "";
-        return `<div class="day-card ${cityCls}">
+        return `<div class="day-card ${cityCls}" id="day-${i}">
           <div class="day-head">
             <div class="day-badge"><span class="b-emoji">${day.emoji}</span><span class="b-day">${day.d}</span></div>
             <div class="day-head-text">
@@ -315,6 +327,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     renderMembers();
     renderCountdown();
+    renderOverview();
     renderTrainTt();
     renderDays();
     renderFlights();
