@@ -244,7 +244,7 @@
             <div class="di-body">
               <div class="di-title">${it.e} ${it.ti}${it.tags.map((tg) => ` <span class="chip ${TAG_CLASS[tg] || ""}">${tg}</span>`).join("")}</div>
               <div class="di-desc">${it.de}</div>
-              ${placeCardsHTML(it.place, it.place2, it.place3)}
+              ${placeCardsHTML(it.place, it.place2, it.place3, it.place4)}
             </div>
           </div>`)
           .join("");
