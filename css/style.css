@@ -1,0 +1,522 @@
+/* ============================================================
+   泰兰德六人行 · 设计系统
+   纸张暖色底 + 曼谷珊瑚红 / 清迈青绿 / 金色点缀
+   ============================================================ */
+
+:root {
+  --paper: #faf6ee;
+  --card: #fffdf8;
+  --ink: #2b2620;
+  --muted: #83765f;
+  --line: #eaddc8;
+  --bkk: #d94f3d;
+  --bkk-soft: #fbeae3;
+  --cnx: #1e7a6d;
+  --cnx-soft: #e3f1ec;
+  --gold: #c08a2e;
+  --gold-soft: #f7ecd7;
+  --shadow: 0 2px 6px rgba(74, 60, 38, .06), 0 12px 32px rgba(74, 60, 38, .08);
+  --serif: "Songti SC", "STSong", "Noto Serif SC", "SimSun", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15.5px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+a { color: var(--cnx); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------------- HERO ---------------- */
+.hero {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.08) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 30%, rgba(255,255,255,.07) 0 2px, transparent 3px),
+    radial-gradient(circle at 40% 82%, rgba(255,255,255,.06) 0 2px, transparent 3px),
+    linear-gradient(135deg, #114a40 0%, #1c7263 55%, #28917a 100%);
+  background-size: 240px 240px, 300px 300px, 260px 260px, cover;
+  color: #fff;
+  text-align: center;
+  padding: 74px 0 54px;
+}
+
+.hero-overline {
+  font-size: 13px;
+  letter-spacing: .35em;
+  color: rgba(255,255,255,.75);
+  text-transform: uppercase;
+}
+.hero-overline .gold { color: #f0c76a; }
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 7vw, 62px);
+  font-weight: 700;
+  letter-spacing: .06em;
+  margin: 10px 0 8px;
+}
+
+.hero-sub { font-size: 17px; color: rgba(255,255,255,.88); }
+.train-name {
+  display: inline-block;
+  background: linear-gradient(90deg, #a8322a, #d95f4e);
+  padding: 1px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.countdown {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 9px 22px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.28);
+  backdrop-filter: blur(4px);
+  font-size: 15px;
+  letter-spacing: .05em;
+}
+.countdown b { color: #f0c76a; font-size: 17px; }
+
+.members { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.member-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.26);
+  font-size: 14.5px;
+  backdrop-filter: blur(3px);
+}
+.member-chip .m-emoji { font-size: 17px; }
+
+.hero-scroll { margin-top: 30px; font-size: 13px; color: rgba(255,255,255,.6); animation: float 2.2s ease-in-out infinite; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+/* ---------------- NAV ---------------- */
+.topnav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 246, 238, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.topnav .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.topnav .wrap::-webkit-scrollbar { display: none; }
+.topnav a {
+  padding: 12px 13px;
+  font-size: 14px;
+  color: var(--ink);
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+.topnav a:hover { text-decoration: none; color: var(--bkk); border-bottom-color: var(--bkk); }
+
+/* ---------------- SECTIONS ---------------- */
+.section { padding: 58px 0; }
+.section.alt { background: #f4eee1; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.section-title {
+  font-family: var(--serif);
+  font-size: 29px;
+  letter-spacing: .04em;
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 6px;
+}
+.section-title .no {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--cnx);
+  border-radius: 8px;
+  padding: 3px 9px;
+  letter-spacing: .08em;
+}
+.section.alt .section-title .no { background: var(--bkk); }
+
+.section-note { color: var(--muted); font-size: 14px; margin-bottom: 26px; }
+
+.loading { color: var(--muted); padding: 10px 0; }
+
+/* ---------------- WEATHER ---------------- */
+.weather-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.weather-panel {
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border-top: 4px solid var(--cnx);
+}
+.weather-panel.bkk { border-top-color: var(--bkk); }
+.weather-panel.cnx { border-top-color: var(--cnx); }
+
+.wp-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px 8px; }
+.wp-city { font-family: var(--serif); font-size: 20px; font-weight: 700; }
+.wp-city small { font-family: var(--sans); font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 8px; }
+.wp-now { font-size: 13.5px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.wp-now .now-emoji { font-size: 22px; }
+
+.wp-where {
+  margin: 0 18px 6px;
+  display: flex; gap: 5px; flex-wrap: wrap;
+}
+.wp-where span {
+  font-size: 11px;
+  padding: 1px 9px;
+  border-radius: 999px;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+}
+.wp-where span.here-bkk { color: var(--bkk); border-color: var(--bkk); background: var(--bkk-soft); font-weight: 600; }
+.wp-where span.here-cnx { color: var(--cnx); border-color: var(--cnx); background: var(--cnx-soft); font-weight: 600; }
+
+.wp-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  padding: 0 12px 14px;
+}
+.wp-day {
+  text-align: center;
+  padding: 9px 2px 8px;
+  border-radius: 12px;
+}
+.wp-day + .wp-day { border-left: 1px dashed var(--line); border-radius: 0; }
+.wp-day .d-label { font-size: 11.5px; color: var(--muted); }
+.wp-day .d-date { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.wp-day .d-emoji { font-size: 24px; margin: 4px 0 2px; }
+.wp-day .d-temp { font-size: 12.5px; font-weight: 600; }
+.wp-day .d-temp small { color: var(--muted); font-weight: 400; }
+.wp-day .d-rain { display: flex; align-items: center; justify-content: center; gap: 4px; font-size: 11.5px; color: #3d7ea6; margin-top: 3px; }
+.wp-day .d-rain .bar { width: 34px; height: 4px; background: #e3ecf3; border-radius: 2px; overflow: hidden; }
+.wp-day .d-rain .bar i { display: block; height: 100%; background: #5ba3d6; border-radius: 2px; }
+
+.weather-foot { padding: 10px 18px; border-top: 1px dashed var(--line); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+
+/* ---------------- OVERVIEW ---------------- */
+.overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.ov-item {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 3px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--line);
+  transition: transform .15s ease;
+}
+.ov-item:hover { transform: translateY(-2px); }
+.ov-item.bkk { border-left-color: var(--bkk); }
+.ov-item.cnx { border-left-color: var(--cnx); }
+.ov-date { font-size: 12.5px; font-weight: 700; color: var(--muted); letter-spacing: .03em; }
+.ov-emoji { font-size: 24px; }
+.ov-txt { font-size: 14px; }
+
+/* ---------------- TRAIN ---------------- */
+.train-card {
+  background: linear-gradient(180deg, #fff9f2, #fdf0e7);
+  border: 1px solid #f0d9c8;
+  border-radius: 22px;
+  padding: 30px 30px 26px;
+  box-shadow: var(--shadow);
+}
+.train-head { display: flex; gap: 20px; align-items: center; }
+.train-big { font-size: 62px; line-height: 1; }
+.train-line { color: var(--muted); font-size: 14px; }
+.train-time { font-family: var(--serif); font-size: 23px; margin: 4px 0 2px; }
+.train-time b { color: var(--bkk); font-size: 26px; }
+.train-dur { color: var(--muted); font-size: 13.5px; }
+.train-warn {
+  margin: 18px 0 6px;
+  background: var(--gold-soft);
+  border: 1px solid #ecd9ae;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.sub-h { font-size: 17px; margin: 26px 0 14px; font-family: var(--serif); }
+
+/* timetable */
+.tt { display: flex; flex-direction: column; }
+.tt-row {
+  display: flex; gap: 16px;
+  padding: 12px 6px;
+  border-bottom: 1px dashed #ecd9c4;
+  align-items: flex-start;
+}
+.tt-row:last-child { border-bottom: none; }
+.tt-time {
+  flex: 0 0 104px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--bkk);
+  font-size: 15px;
+  padding-top: 2px;
+}
+.tt-body { flex: 1; }
+.tt-title { font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.tt-desc { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+
+/* plans */
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.plan {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  font-size: 13.5px;
+  color: #4a4233;
+}
+.plan h4 { font-size: 15px; margin-bottom: 8px; }
+.plan-a { border-top: 4px solid var(--cnx); }
+.plan-b { border-top: 4px solid var(--gold); }
+.plan-c { border-top: 4px solid var(--bkk); }
+
+.train-tips { display: flex; flex-wrap: wrap; gap: 9px; }
+.train-tips span {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 13px;
+  color: #5c5342;
+}
+
+/* ---------------- DAYS ---------------- */
+.day-card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.day-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.day-badge {
+  flex: 0 0 auto;
+  width: 58px; height: 58px;
+  border-radius: 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--bkk-soft);
+}
+.day-card.cnx .day-badge { background: var(--cnx-soft); }
+.day-badge .b-emoji { font-size: 22px; line-height: 1.1; }
+.day-badge .b-day { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.day-head-text { flex: 1; }
+.day-title { font-family: var(--serif); font-size: 19px; font-weight: 700; }
+.day-sub { font-size: 13px; color: var(--muted); }
+.city-tag {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--bkk);
+}
+.day-card.cnx .city-tag { background: var(--cnx); }
+.city-tag.none { background: var(--muted); }
+
+.day-items { padding: 10px 24px 14px; }
+.day-item { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.day-item:last-child { border-bottom: none; }
+.di-time {
+  flex: 0 0 108px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+  color: var(--cnx);
+  padding-top: 3px;
+}
+.day-card.bkk .di-time { color: var(--bkk); }
+.di-body { flex: 1; }
+.di-title { font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.di-desc { color: var(--muted); font-size: 13.8px; margin-top: 2px; }
+
+/* ---------------- CHIPS ---------------- */
+.chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1.5px 9px;
+  border-radius: 999px;
+  letter-spacing: .02em;
+}
+.chip-booked { background: var(--gold-soft); color: #8a5f14; border: 1px solid #ecd9ae; }
+.chip-food { background: var(--cnx-soft); color: var(--cnx); border: 1px solid #c4ddd4; }
+.chip-shop { background: #efe6f5; color: #7a4d94; border: 1px solid #dcc9e8; }
+.chip-opt { background: transparent; color: var(--muted); border: 1px dashed var(--line); }
+.chip-prebook { background: #e8eef6; color: #3d5f86; border: 1px solid #c9d8ea; }
+.chip-stay { background: #f3e9dc; color: #8a6a3f; border: 1px solid #e3d2b5; }
+.chip-trans { background: var(--bkk-soft); color: var(--bkk); border: 1px solid #f0c9bd; }
+
+/* ---------------- PLACE CARDS（地点卡 · 点击跳谷歌地图） ---------------- */
+.place-row { display: flex; flex-direction: column; gap: 8px; margin-top: 9px; }
+.place-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f2f8f6;
+  border: 1px solid #cfe3dc;
+  border-left: 3px solid var(--cnx);
+  border-radius: 12px;
+  padding: 9px 13px;
+  color: var(--ink);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.place-card:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(30, 122, 109, .14);
+  border-color: var(--cnx);
+}
+.pc-pin { font-size: 17px; flex: 0 0 auto; }
+.pc-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pc-name { font-weight: 600; font-size: 13.8px; line-height: 1.45; }
+.pc-meta { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.pc-stars { color: #b8860b; font-weight: 700; }
+.pc-price { color: var(--cnx); font-weight: 700; }
+.pc-note { color: var(--muted); }
+.pc-status {
+  flex: 0 0 auto;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+.pc-status::before { content: "●"; margin-right: 4px; font-size: 8px; vertical-align: 1px; }
+.st-open { background: #e2f3e9; color: #1d7a45; }
+.st-closed { background: #f6e9e6; color: #b0493a; }
+.st-soon { background: var(--gold-soft); color: #8a5f14; }
+.st-unknown { background: #f0ede4; color: #8a8271; }
+.pc-arrow { color: var(--cnx); font-size: 14px; flex: 0 0 auto; }
+
+.hotel-maps { padding: 0 22px 20px; }
+.hotel-maps .place-card { background: #fff; }
+
+/* ---------------- FLIGHTS ---------------- */
+.flights-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.flights-table th {
+  text-align: left;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: .06em;
+  padding: 13px 18px;
+  background: #f6efdf;
+  border-bottom: 1px solid var(--line);
+}
+.flights-table td { padding: 13px 18px; border-bottom: 1px dashed var(--line); font-size: 14.5px; }
+.flights-table tr:last-child td { border-bottom: none; }
+.flights-table .f-member { font-weight: 700; white-space: nowrap; }
+.flights-table .f-time { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--bkk); }
+.flights-table .f-note { color: var(--muted); font-size: 13px; }
+.flights-table tr.pending td { color: #b3a98f; }
+.flights-table .f-pending { font-style: italic; color: #b3a98f; }
+
+/* ---------------- HOTELS ---------------- */
+.hotels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.hotel-card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border-top: 4px solid var(--bkk);
+}
+.hotel-card.cnx { border-top-color: var(--cnx); }
+.hotel-head { padding: 20px 22px 6px; }
+.hotel-city { font-size: 12.5px; font-weight: 700; color: var(--muted); letter-spacing: .1em; }
+.hotel-name { font-family: var(--serif); font-size: 21px; font-weight: 700; margin: 4px 0 6px; }
+.hotel-addr { font-size: 13px; color: var(--muted); }
+.hotel-facts { padding: 10px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+.hf { font-size: 13.5px; }
+.hf b { display: block; font-size: 11.5px; color: var(--muted); letter-spacing: .05em; font-weight: 600; }
+.hotel-notes { margin: 4px 22px 20px; padding: 12px 14px; background: var(--gold-soft); border-radius: 12px; font-size: 13px; color: #6b5630; }
+.hotel-notes li { margin-left: 18px; margin-bottom: 3px; }
+.hotel-notes li:last-child { margin-bottom: 0; }
+
+/* ---------------- FOOD ---------------- */
+.food-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 16px; }
+.food-card {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  display: flex; flex-direction: column; gap: 6px;
+  border: 1px solid transparent;
+  transition: transform .15s ease, border-color .15s ease;
+}
+.food-card:hover { transform: translateY(-3px); border-color: var(--line); }
+.food-top { display: flex; align-items: center; gap: 10px; }
+.food-emoji { font-size: 28px; }
+.food-name { font-weight: 700; font-size: 15.5px; }
+.food-area { font-size: 12.5px; color: var(--muted); }
+.food-when { align-self: flex-start; font-size: 12px; font-weight: 600; color: var(--cnx); background: var(--cnx-soft); border-radius: 999px; padding: 2px 11px; }
+.food-note { font-size: 13px; color: #6d6351; flex: 1; }
+.food-links { display: flex; gap: 8px; }
+.food-links a {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--bkk);
+  border: 1px solid #f0c9bd;
+  background: var(--bkk-soft);
+  border-radius: 999px;
+  padding: 2px 12px;
+}
+.food-links a:hover { text-decoration: none; background: var(--bkk); color: #fff; }
+
+/* ---------------- TIPS ---------------- */
+.tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tip {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.tip h4 { font-size: 15.5px; margin-bottom: 8px; }
+.tip p { font-size: 13.5px; color: #5f5644; }
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+  background: #23201a;
+  color: #cfc6b2;
+  text-align: center;
+  padding: 34px 0 38px;
+  font-size: 14px;
+}
+.footer .foot-note { margin-top: 10px; font-size: 12px; color: #8d8572; }
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 900px) {
+  .weather-grid, .hotels-grid { grid-template-columns: 1fr; }
+  .plans { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr 1fr; }
+  .tt-time, .di-time { flex-basis: 84px; }
+  .train-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  .section { padding: 44px 0; }
+  .section-title { font-size: 25px; }
+  .day-head { padding: 15px 16px; }
+  .day-items { padding: 6px 16px 12px; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .flights-table td, .flights-table th { padding: 11px 12px; }
+  .hotel-facts { grid-template-columns: 1fr; }
+  .tt-time, .di-time { flex-basis: 72px; font-size: 13px; }
+  .day-item { gap: 10px; }
+}
