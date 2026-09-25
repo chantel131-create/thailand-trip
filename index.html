@@ -52,7 +52,16 @@
   <div class="wrap">
     <h2 class="section-title"><span class="no">02</span> 行程总览</h2>
     <p class="section-note">点击任意卡片，直达下方对应的每日行程。</p>
-    <div class="overview" id="overview-grid"></div>
+    <div class="overview" id="overview-grid">
+      <!-- 静态兜底：JS 加载失败时也能显示；正常时由 app.js 渲染为可点击跳转卡片 -->
+      <a class="ov-item bkk" href="#day-0"><span class="ov-date">9/29 周二</span><span class="ov-emoji">✈️</span><span class="ov-txt">出发日 · 上海 → 曼谷</span></a>
+      <a class="ov-item bkk" href="#day-1"><span class="ov-date">9/30 周三</span><span class="ov-emoji">🏙️</span><span class="ov-txt">1981 古着 · 红丝绒夜火车</span></a>
+      <a class="ov-item cnx" href="#day-2"><span class="ov-date">10/1 周四</span><span class="ov-emoji">🌇</span><span class="ov-txt">抵达清迈 · 按摩 + PARI 晚餐</span></a>
+      <a class="ov-item cnx" href="#day-3"><span class="ov-date">10/2 周五</span><span class="ov-emoji">🍳</span><span class="ov-txt">奶奶厨房 · Oasis Spa</span></a>
+      <a class="ov-item cnx" href="#day-4"><span class="ov-date">10/3 周六</span><span class="ov-emoji">☕</span><span class="ov-txt">咖啡农场之旅 · 后门夜市</span></a>
+      <a class="ov-item cnx" href="#day-5"><span class="ov-date">10/4 周日</span><span class="ov-emoji">🧺</span><span class="ov-txt">Jing Jai 集市 · 周日步行街</span></a>
+      <a class="ov-item none" href="#day-6"><span class="ov-date">10/5 周一</span><span class="ov-emoji">✈️</span><span class="ov-txt">返程 · 清迈 → 上海</span></a>
+    </div>
   </div>
 </section>
 
