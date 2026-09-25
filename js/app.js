@@ -327,6 +327,11 @@
 
   /* ---------- init ---------- */
   document.addEventListener("DOMContentLoaded", () => {
+    // 每次打开都从首页顶部开始：清除旧链接残留的 #锚点，禁用浏览器滚动位置恢复
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+    window.scrollTo(0, 0);
+
     // 每个板块独立 try/catch：任一板块出错不影响其他板块
     const safe = (fn) => { try { fn(); } catch (e) { console.error("[render]", fn.name, e); } };
     safe(renderMembers);
