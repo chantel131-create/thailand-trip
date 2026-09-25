@@ -267,10 +267,10 @@
         </tr>`;
       })
       .join("");
-    $("#flights-box").innerHTML = `<table class="flights-table">
+    $("#flights-box").innerHTML = `<div class="table-scroll"><table class="flights-table">
       <thead><tr><th>成员</th><th>日期</th><th>航线</th><th>时间</th><th>备注</th></tr></thead>
       <tbody>${rows}</tbody>
-    </table>`;
+    </table></div>`;
   }
 
   /* ---------- 酒店 ---------- */
