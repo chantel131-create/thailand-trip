@@ -500,18 +500,38 @@ a:hover { text-decoration: underline; }
 .footer .foot-note { margin-top: 10px; font-size: 12px; color: #8d8572; }
 
 /* ---------------- RESPONSIVE ---------------- */
+/* 手机触屏体验 */
+a, .place-card, .food-links a { -webkit-tap-highlight-color: transparent; }
+
+/* 航班表格：窄屏横向滑动 */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.flights-table { min-width: 620px; }
+
 @media (max-width: 900px) {
   .weather-grid, .hotels-grid { grid-template-columns: 1fr; }
   .plans { grid-template-columns: 1fr; }
   .tips-grid { grid-template-columns: 1fr 1fr; }
   .tt-time, .di-time { flex-basis: 84px; }
   .train-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  /* 天气 7 日条：横向滑动，每天至少 76px */
+  .wp-days {
+    grid-template-columns: repeat(7, minmax(76px, 1fr));
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
 }
 
 @media (max-width: 640px) {
   body { font-size: 15px; }
+  .wrap { padding: 0 16px; }
   .section { padding: 44px 0; }
   .section-title { font-size: 25px; }
+  .hero { padding: 52px 0 40px; }
+  .hero-sub { font-size: 15px; }
+  .hero-overline { letter-spacing: .22em; }
+  .countdown { font-size: 13.5px; padding: 7px 15px; }
+  .topnav a { padding: 11px 12px; }
   .day-head { padding: 15px 16px; }
   .day-items { padding: 6px 16px 12px; }
   .tips-grid { grid-template-columns: 1fr; }
@@ -519,4 +539,29 @@ a:hover { text-decoration: underline; }
   .hotel-facts { grid-template-columns: 1fr; }
   .tt-time, .di-time { flex-basis: 72px; font-size: 13px; }
   .day-item { gap: 10px; }
+  .train-card { padding: 20px 16px 18px; }
+  .train-big { font-size: 46px; }
+  .train-time { font-size: 19px; }
+  .train-time b { font-size: 22px; }
+  /* 天气面板头部：实时信息换行 */
+  .wp-head { flex-wrap: wrap; gap: 4px; }
+  .wp-now { width: 100%; justify-content: flex-end; }
+  .wp-days { grid-template-columns: repeat(7, minmax(70px, 1fr)); }
+  .hotel-head { padding: 16px 16px 6px; }
+  .hotel-facts { padding: 10px 16px; }
+  .hotel-notes { margin: 4px 16px 16px; }
+  .hotel-maps { padding: 0 16px 16px; }
+}
+
+@media (max-width: 480px) {
+  /* 时间轴改为上下结构：时间在上、内容在下 */
+  .day-item, .tt-row { flex-direction: column; gap: 3px; }
+  .di-time, .tt-time { flex: none; }
+  /* 地点卡：状态与箭头换行，避免挤压名称 */
+  .place-card { flex-wrap: wrap; row-gap: 5px; }
+  .pc-body { flex: 1 1 calc(100% - 40px); }
+  .pc-status { margin-left: 30px; white-space: normal; line-height: 1.5; }
+  .pc-arrow { margin-left: auto; }
+  .day-head { flex-wrap: wrap; gap: 8px; }
+  .food-links a { padding: 5px 14px; }
 }
