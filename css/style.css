@@ -213,14 +213,25 @@ a:hover { text-decoration: underline; }
   display: flex; flex-direction: column; gap: 3px;
   box-shadow: var(--shadow);
   border-left: 4px solid var(--line);
-  transition: transform .15s ease;
+  transition: transform .15s ease, box-shadow .15s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
-.ov-item:hover { transform: translateY(-2px); }
+.ov-item:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(74, 60, 38, .14); }
 .ov-item.bkk { border-left-color: var(--bkk); }
 .ov-item.cnx { border-left-color: var(--cnx); }
 .ov-date { font-size: 12.5px; font-weight: 700; color: var(--muted); letter-spacing: .03em; }
 .ov-emoji { font-size: 24px; }
 .ov-txt { font-size: 14px; }
+.ov-jump {
+  font-size: 11.5px;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+.ov-item:hover .ov-jump { opacity: 1; }
+@media (max-width: 900px) { .ov-jump { opacity: .8; } }
 
 /* ---------------- TRAIN ---------------- */
 .train-card {
